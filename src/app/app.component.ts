@@ -47,8 +47,11 @@ export class AppComponent implements OnInit {
                 new google.maps.Marker({
                   position: { lat: fireLat, lng: fireLong },
                   title: e.title,
+                  icon: '../assets/img/fire-icon.png',
+                  optimized: false,
                 })
               );
+              console.log(this.overlays);
             });
           }
         });
