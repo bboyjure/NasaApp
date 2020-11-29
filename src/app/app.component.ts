@@ -12,18 +12,24 @@ export class AppComponent implements OnInit {
 
   constructor(private nasaService: NasaService) {}
 
-  options: any;
+  options: any = [];
   overlays: any[] = [];
   wildfires: any[];
+  latitude: number;
+  longitude: number;
 
   ngOnInit(): void {
-    this.options = {
-      center: {
-        lat: 46.255308799999995,
-        lng: 14.358937599999999,
-      },
-      zoom: 10,
-    };
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+      this.options = {
+        center: {
+          lat: this.latitude,
+          lng: this.longitude,
+        },
+        zoom: 10,
+      };
+    });
     this.nasaService.getData().subscribe(
       (data) => {
         this.wildfires = data.events;
@@ -35,16 +41,15 @@ export class AppComponent implements OnInit {
         this.wildfires.forEach((e) => {
           if (e.categories.find((id) => id.id === 8)) {
             e.geometries.forEach((geo) => {
-              const fireLat = geo.coordinates[0];
-              const fireLong = geo.coordinates[1];
-              const marker = new google.maps.Marker({
-                position: { lat: fireLat, lng: fireLong },
-                title: e.title,
-              });
-              this.overlays.push(marker);
+              const fireLat = geo.coordinates[1];
+              const fireLong = geo.coordinates[0];
+              this.overlays.push(
+                new google.maps.Marker({
+                  position: { lat: fireLat, lng: fireLong },
+                  title: e.title,
+                })
+              );
             });
-            console.log(this.overlays.length); // THIS LOGS 75
-            console.log(this.overlays); //THIS LOGS ALL THE MARKES THAT WERE PUSHED INTO ARRAY
           }
         });
       }
