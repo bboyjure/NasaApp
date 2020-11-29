@@ -12,6 +12,7 @@ export class NasaService {
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any>{
-    return this.http.get(this.NASA_URL);
+    this.events = this.http.get(this.NASA_URL);
+    return this.events;
   }
 }

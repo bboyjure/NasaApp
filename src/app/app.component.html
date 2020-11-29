@@ -1,3 +1,5 @@
-<p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100vw','height':'100vh'}" ></p-gmap>
+<div *ngIf="overlays">
+    <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100vw','height':'100vh'}" ></p-gmap>
+</div>
 
 
