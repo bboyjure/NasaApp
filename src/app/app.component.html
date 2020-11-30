@@ -1,5 +1,6 @@
-<div *ngIf="latitude">
-    <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100vw','height':'100vh'}" ></p-gmap>
+<circle-progress *ngIf="loaded" [percent]="100" [radius]="100" [outerStrokeWidth]="10" [innerStrokeWidth]="12"
+    [outerStrokeColor]="'#228B22'" [innerStrokeColor]="'#F0E68C'" [animation]="true" [animationDuration]="1000">
+</circle-progress>
+<div *ngIf="!loaded">
+    <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100vw','height':'100vh'}"></p-gmap>
 </div>
-
-

@@ -10,8 +10,9 @@ declare var google: any;
 export class AppComponent implements OnInit {
   title = 'NasaApp';
 
-  constructor(private nasaService: NasaService) {}
+  constructor(private nasaService: NasaService) { }
 
+  loaded = true;
   options: any = [];
   overlays: any[] = [];
   wildfires: any[];
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
         console.log('Error ' + err);
       },
       () => {
+        this.loaded = false;
         this.wildfires.forEach((e) => {
           if (e.categories.find((id) => id.id === 8)) {
             e.geometries.forEach((geo) => {

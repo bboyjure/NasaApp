@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AppComponent } from './app.component';
 import { GMapModule} from 'primeng/gmap';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     BrowserModule,
     GMapModule,
-    HttpClientModule
+    HttpClientModule,
+    NgCircleProgressModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]
