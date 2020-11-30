@@ -1,6 +1,6 @@
-<circle-progress *ngIf="loaded" [percent]="100" [radius]="100" [outerStrokeWidth]="10" [innerStrokeWidth]="12"
-    [outerStrokeColor]="'#228B22'" [innerStrokeColor]="'#F0E68C'" [animation]="true" [animationDuration]="1000">
+<circle-progress *ngIf="loaded" [percent]="100" [radius]="100" [outerStrokeWidth]="8" [innerStrokeWidth]="0"
+    [outerStrokeColor]="'#8FBC8F'" [innerStrokeColor]="'#F0E68C'" [animation]="true" [animationDuration]="1500">
 </circle-progress>
-<div *ngIf="!loaded">
+<div *ngIf="!loaded && latitude && longitude">
     <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100vw','height':'100vh'}"></p-gmap>
 </div>
